@@ -1,9 +1,9 @@
-class GamesController < OpenReadController
+class GamesController < ProtectedController
   before_action :set_game, only: %i[show update destroy]
 
   # GET /games
   def index
-    @games = Game.all
+    @games = current_user.games.all
 
     render json: @games
   end
